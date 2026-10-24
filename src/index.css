@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-navy-950 font-sans text-slate-800 antialiased;
+  }
+  ::selection { @apply bg-cyan-400/30; }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-white bg-white shadow-card;
+  }
+  .card-dark {
+    @apply rounded-2xl bg-navy-900 text-white shadow-card;
+  }
+  .card-mint {
+    @apply rounded-2xl bg-[#d7e8d6] shadow-card;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .input {
+    @apply h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none transition
+      placeholder:text-slate-400 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/15;
+  }
+  .btn {
+    @apply inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 text-sm font-semibold transition
+      focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/20 hover:brightness-110;
+  }
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-slate-700 hover:border-cyan-400 hover:text-cyan-700;
+  }
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100;
+  }
+  .btn-dark {
+    @apply btn border border-white/15 bg-white/5 text-white hover:bg-white/10;
+  }
+  /* dark solid button for the light content panel */
+  .btn-ink {
+    @apply btn bg-navy-900 text-white shadow-sm hover:bg-navy-700;
+  }
+  .chip {
+    @apply rounded-lg px-3 py-1.5 text-xs font-semibold transition;
+  }
+  .table-th {
+    @apply whitespace-nowrap px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500;
+  }
+  .table-td {
+    @apply whitespace-nowrap px-4 py-3 text-sm text-slate-700;
+  }
+  .skeleton {
+    @apply animate-shimmer rounded-xl bg-[length:800px_100%];
+    background-image: linear-gradient(90deg, #e2e8f0 0%, #f1f5f9 40%, #e2e8f0 80%);
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar { height: 8px; width: 8px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+
+/* deep green backdrop behind the app shell, like the reference */
+.app-backdrop {
+  background:
+    radial-gradient(1200px 600px at 100% 0%, rgba(47, 179, 60, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 100%, rgba(47, 179, 60, 0.10), transparent 60%),
+    #06120a;
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Recharts focus outline */
+.recharts-wrapper *:focus { outline: none; }
+
+/* ---------- Print layout (Reports page) ---------- */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body { background: #fff !important; }
+  .no-print { display: none !important; }
+  .print-area { box-shadow: none !important; border: none !important; padding: 0 !important; }
+  .print-main { margin: 0 !important; padding: 0 !important; }
+  .print-break { break-inside: avoid; }
+}
